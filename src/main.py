@@ -23,8 +23,8 @@ def fix_name(reader):
 
 def fix_phone(reader):
     for row in reader:
-        pattern = r'(\+7|8)\s?\(?(\d{3})\)?\s?-?(\d{3})-?(\d{2})-?(\d{2})\s?(\(доб\.\s\d{4}\))?'
-        repl = r'+7(\2)\3-\4-\5\6'
+        pattern = r'(\+7|8)\s?\(?(\d{3})\)?\s?-?(\d{3})-?(\d{2})-?(\d{2})\s?\(?(доб.)?\s?(\d{4})?\)?'
+        repl = r'+7(\2)\3-\4-\5 \6\7'
         row['phone'] = re.sub(pattern, repl, row['phone'])
 
 def merge_duplicate_rows(reader):
